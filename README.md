@@ -1,0 +1,94 @@
+# @renzp/x6-react-components
+
+基于@antv/x6封装的React组件
+
+## 安装
+
+```sh
+npm install @renzp/x6-react-components
+```
+
+## 使用
+
+```ts
+import {
+  X6BlockEdge,
+  X6CircleNode,
+  X6Graph,
+  X6RectNode,
+  X6SnapLine,
+  X6Zoom,
+} from '../packages'
+
+const App = () => {
+  const nodes = Array.from({ length: 10 }).map((_, i: number) => {
+    return {
+      id: `node_${i}`,
+      name: `Node-${i + 1}`,
+      x: 200 * (i + 1),
+      y: 400,
+      type: i % 2 ? 'rect' : 'circle',
+    }
+  })
+
+  const edges = nodes.reduce((prev: Array<any>, curr, i: number) => {
+    let source = ''
+    let target = ''
+
+    if (i < nodes.length - 1) {
+      const nextTarget = nodes[i + 1]
+      source = curr.id
+      target = nextTarget.id
+    } else {
+      return prev
+    }
+    return [...prev, { source, target }]
+  }, [])
+
+  const x6Data: any = { nodes, edges }
+
+  return (
+    <div
+      style={{
+        height: '100vh',
+      }}
+    >
+      <X6Graph>
+        <X6Zoom />
+        <X6SnapLine />
+        {x6Data.nodes.map((item: any) => {
+          return item.type === 'rect' ? (
+            <X6RectNode
+              key={item.id}
+              zIndex={10}
+              height={100}
+              width={100}
+              id={item.id}
+              x={item.x}
+              y={item.y}
+              label={item.name}
+            />
+          ) : (
+            <X6CircleNode
+              key={item.id}
+              zIndex={10}
+              height={100}
+              width={100}
+              id={item.id}
+              x={item.x}
+              y={item.y}
+              label={item.name}
+            />
+          )
+        })}
+        {x6Data.edges.map((item: any, i: number) => {
+          return <X6BlockEdge {...item} key={`edge_${i}`} />
+        })}
+      </X6Graph>
+      {}
+    </div>
+  )
+}
+
+export default App
+```
