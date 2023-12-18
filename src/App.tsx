@@ -1,4 +1,6 @@
+import { useRef } from 'react'
 import {
+  Graph,
   X6BlockEdge,
   X6CircleNode,
   X6Graph,
@@ -8,6 +10,7 @@ import {
 } from '../packages'
 
 const App = () => {
+  const ref = useRef<Graph | undefined>()
   const nodes = Array.from({ length: 10 }).map((_, i: number) => {
     return {
       id: `node_${i}`,
@@ -34,13 +37,17 @@ const App = () => {
 
   const x6Data: any = { nodes, edges }
 
+  const onMount = (graph: Graph) => {
+    ref.current = graph
+  }
+
   return (
     <div
       style={{
         height: '100vh',
       }}
     >
-      <X6Graph>
+      <X6Graph onMount={onMount}>
         <X6Zoom />
         <X6SnapLine />
         {x6Data.nodes.map((item: any) => {

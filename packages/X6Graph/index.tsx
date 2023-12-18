@@ -1,21 +1,16 @@
-import { Graph } from '@antv/x6'
+import { Graph, type Options } from '@antv/x6'
 import { createContext, useEffect, useRef, useState } from 'react'
 import { X6ZOOM } from '../X6Zoom'
 import './index.less'
 
-export interface GraphProps {
-  height?: number
-  width?: number
-  scaling?: { min?: number; max?: number }
-  autoResize?: boolean
-  panning?: boolean
-  mousewheel?: boolean
+export interface X6GraphProps extends Partial<Options.Manual> {
   children?: React.ReactNode
+  onMount?: (graph: Graph) => void
 }
 
 export const GraphContext = createContext<Graph | undefined>(undefined)
 
-const ReactGraph = (props: GraphProps) => {
+const X6Graph = (props: X6GraphProps) => {
   const rootEl = useRef<HTMLDivElement>(null)
   const [graph, setGraph] = useState<Graph>()
   const autoResize = props?.autoResize ?? true
@@ -37,7 +32,13 @@ const ReactGraph = (props: GraphProps) => {
         },
         ...(props ?? {}),
       })
-      setGraph(x6Graph)
+
+      setGraph((v) => {
+        if (x6Graph && !v) {
+          props?.onMount?.(x6Graph)
+        }
+        return x6Graph
+      })
     }
   }, [autoResize, mousewheel, panning, props])
 
@@ -51,4 +52,4 @@ const ReactGraph = (props: GraphProps) => {
   )
 }
 
-export default ReactGraph
+export default X6Graph
