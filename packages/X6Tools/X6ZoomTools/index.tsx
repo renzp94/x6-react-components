@@ -1,6 +1,6 @@
 import classNames from '@renzp/classes'
 import { useContext, useEffect, useState } from 'react'
-import { GraphContext } from '../X6Graph'
+import { GraphContext } from '../../X6Graph'
 import './index.less'
 
 export enum X6ZOOM {

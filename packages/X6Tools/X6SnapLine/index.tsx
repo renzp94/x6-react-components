@@ -1,6 +1,6 @@
 import { Snapline } from '@antv/x6-plugin-snapline'
 import { useContext, useEffect } from 'react'
-import { GraphContext } from '../X6Graph'
+import { GraphContext } from '../../X6Graph'
 import './index.less'
 
 const X6SnapLine = (props: Snapline.Options) => {

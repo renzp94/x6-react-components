@@ -1,6 +1,6 @@
 import { Graph, type Options } from '@antv/x6'
 import { createContext, useEffect, useRef, useState } from 'react'
-import { X6ZOOM } from '../X6ZoomTools'
+import { X6ZOOM } from '../X6Tools/X6ZoomTools'
 import './index.less'
 
 export interface X6GraphProps extends Partial<Options.Manual> {

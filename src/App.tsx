@@ -6,7 +6,7 @@ import {
   X6Graph,
   X6RectNode,
   X6SnapLine,
-  X6Zoom,
+  X6ZoomTools,
 } from '../packages'
 
 const App = () => {
@@ -48,7 +48,7 @@ const App = () => {
       }}
     >
       <X6Graph onMount={onMount}>
-        <X6Zoom />
+        <X6ZoomTools />
         <X6SnapLine />
         {x6Data.nodes.map((item: any) => {
           return item.type === 'rect' ? (
