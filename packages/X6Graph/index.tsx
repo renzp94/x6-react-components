@@ -1,6 +1,6 @@
 import { Graph, type Options } from '@antv/x6'
 import { createContext, useEffect, useRef, useState } from 'react'
-import { X6ZOOM } from '../X6Zoom'
+import { X6ZOOM } from '../X6ZoomTools'
 import './index.less'
 
 export interface X6GraphProps extends Partial<Options.Manual> {
@@ -13,19 +13,22 @@ export const GraphContext = createContext<Graph | undefined>(undefined)
 const X6Graph = (props: X6GraphProps) => {
   const rootEl = useRef<HTMLDivElement>(null)
   const [graph, setGraph] = useState<Graph>()
-  const autoResize = props?.autoResize ?? true
-  const panning = props?.panning ?? true
-  const mousewheel = props?.mousewheel ?? true
 
   useEffect(() => {
     if (rootEl.current) {
+      const autoResize = props?.autoResize ?? true
+      const panning = props?.panning ?? true
       const scaling = props?.scaling ?? { min: X6ZOOM.MIN, max: X6ZOOM.MAX }
+      const mousewheel = props?.mousewheel ?? {
+        enabled: true,
+        factor: X6ZOOM.DEFAULT,
+      }
 
       const x6Graph = new Graph({
         container: rootEl.current,
         autoResize,
-        panning,
         mousewheel,
+        panning,
         scaling,
         grid: {
           visible: true,
@@ -40,7 +43,7 @@ const X6Graph = (props: X6GraphProps) => {
         return x6Graph
       })
     }
-  }, [autoResize, mousewheel, panning, props])
+  }, [props])
 
   return (
     <GraphContext.Provider value={graph}>

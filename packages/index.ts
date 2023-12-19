@@ -1,6 +1,6 @@
 export { default as X6Graph } from './X6Graph'
 export { default as X6SnapLine } from './X6SnapLine'
-export { default as X6Zoom } from './X6Zoom'
+export { default as X6Zoom } from './X6ZoomTools'
 export { default as X6Layout } from './X6Layout'
 export * from './Nodes'
 export * from './Edges'
