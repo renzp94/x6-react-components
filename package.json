@@ -1,9 +1,11 @@
 {
   "name": "@renzp/x6-react-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "基于@antv/x6封装的React组件",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -27,7 +29,11 @@
     "url": "https://github.com/renzp94/x6-react-components/issues"
   },
   "homepage": "https://github.com/renzp94/x6-react-components#readme",
-  "keywords": ["@antv/x6", "x6 component", "x6 react component"],
+  "keywords": [
+    "@antv/x6",
+    "x6 component",
+    "x6 react component"
+  ],
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18",
