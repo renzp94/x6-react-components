@@ -3,7 +3,7 @@ import { createContext, useEffect, useRef, useState } from 'react'
 import { X6ZOOM } from '../X6Tools/X6ZoomTools'
 import './index.less'
 
-export interface X6GraphProps extends Partial<Options.Manual> {
+export interface X6GraphProps extends Omit<Partial<Options.Manual>, 'grid'> {
   children?: React.ReactNode
   onMount?: (graph: Graph) => void
 }
@@ -30,10 +30,8 @@ const X6Graph = (props: X6GraphProps) => {
         mousewheel,
         panning,
         scaling,
-        grid: {
-          visible: true,
-        },
         ...(props ?? {}),
+        grid: undefined,
       })
 
       setGraph((v) => {

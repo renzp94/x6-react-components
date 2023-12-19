@@ -1,6 +1,7 @@
 export * from '@antv/x6'
+export * from './X6Edges'
 export { default as X6Graph } from './X6Graph'
+export * from './X6Grids'
 export { default as X6Layout } from './X6Layout'
 export * from './X6Nodes'
-export * from './X6Edges'
 export * from './X6Tools'
