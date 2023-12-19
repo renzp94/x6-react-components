@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "基于@antv/x6封装的React组件",
   "type": "module",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -29,14 +27,11 @@
     "url": "https://github.com/renzp94/x6-react-components/issues"
   },
   "homepage": "https://github.com/renzp94/x6-react-components#readme",
-  "keywords": [
-    "@antv/x6",
-    "x6 component",
-    "x6 react component"
-  ],
+  "keywords": ["@antv/x6", "x6 component", "x6 react component"],
   "peerDependencies": {
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "@antv/x6": ">=2.16"
   },
   "scripts": {
     "dev": "vite",
@@ -59,8 +54,6 @@
     "@types/node": "^20.10.4",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "less": "^4.2.0",
     "postcss-less": "^6.0.0",
@@ -69,8 +62,9 @@
     "stylelint-config-property-sort-order-smacss": "^9.1.0",
     "stylelint-config-standard": "^35.0.0",
     "stylelint-order": "^6.0.4",
-    "typescript": "^5.0.2",
+    "typescript": "^5.3.3",
     "vite": "^4.4.5",
+    "vite-plugin-css-injected-by-js": "^3.3.0",
     "vite-plugin-dts": "^3.6.4"
   }
 }

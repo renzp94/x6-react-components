@@ -15,14 +15,14 @@ export default defineConfig({
       fileName: 'index',
     },
     rollupOptions: {
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', '@antv/x6'],
       output: {
         globals: {
           react: 'react',
           'react-dom': 'react-dom',
+          '@antv/x6': '@antv/x6',
         },
       },
-      plugins: [],
     },
   },
 })

@@ -1,4 +1,3 @@
-export * from '@antv/x6'
 export * from './X6Edges'
 export { default as X6Graph } from './X6Graph'
 export * from './X6Grids'
