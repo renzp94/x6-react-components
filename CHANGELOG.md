@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/renzp94/x6-react-components/compare/v0.0.2...v0.0.3) (2023-12-20)
+
+
+### 新功能
+
+* 修复内置边无效的问题及新增X6ArrowEdge组件、X6ImageEdge组件及dashedLine属性 ([6dbd79a](https://github.com/renzp94/x6-react-components/commit/6dbd79a896aed9f3f7f4dd5f24879f16dd036e1a))
+
 ### [0.0.2](https://github.com/renzp94/x6-react-components/compare/v0.0.1...v0.0.2) (2023-12-19)
 
 
