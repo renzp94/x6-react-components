@@ -2,8 +2,8 @@ import { Edge } from '@antv/x6'
 import { useContext, useEffect } from 'react'
 import { GraphContext } from '../../X6Graph'
 
-export interface X6EdgeProps {
-  sourceMarker:
+export interface X6EdgeProps extends Edge.Metadata {
+  marker?:
     | 'block'
     | 'classic'
     | 'diamond'
@@ -13,9 +13,7 @@ export interface X6EdgeProps {
     | 'circle'
     | 'circlePlus'
     | 'ellipse'
-  source?: Edge.TerminalData
-  target?: Edge.TerminalData
-  [key: string]: any
+  dashedLine?: boolean
 }
 
 const X6Edge = (props: X6EdgeProps) => {
@@ -26,6 +24,15 @@ const X6Edge = (props: X6EdgeProps) => {
       graph.addEdge({
         shape: 'edge',
         ...props,
+        attrs: {
+          ...(props?.attrs ?? {}),
+          line: {
+            targetMarker: props?.marker,
+            sourceMarker: props?.marker,
+            strokeDasharray: props?.dashedLine ? 5 : undefined,
+            ...(props?.attrs?.line ?? {}),
+          },
+        },
       })
     }
   }, [graph, props])

@@ -1,14 +1,15 @@
 import { Graph } from '@antv/x6'
 import { useRef } from 'react'
 import {
-  X6BlockEdge,
   X6CircleNode,
   X6Graph,
+  X6ImageEdge,
   X6RectNode,
   X6SnapLine,
   X6ZoomTools,
   XDotGrid,
 } from '../packages'
+import ArrowImg from './assets/arrow.png'
 
 const App = () => {
   const ref = useRef<Graph | undefined>()
@@ -78,7 +79,16 @@ const App = () => {
           )
         })}
         {x6Data.edges.map((item: any, i: number) => {
-          return <X6BlockEdge {...item} key={`edge_${i}`} />
+          return (
+            <X6ImageEdge
+              {...item}
+              size={32}
+              isRenderSourceMarker={false}
+              image={ArrowImg}
+              dashedLine
+              key={`edge_${i}`}
+            />
+          )
         })}
       </X6Graph>
       {}

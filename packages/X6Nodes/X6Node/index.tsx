@@ -1,7 +1,8 @@
+import { Node } from '@antv/x6'
 import { useContext, useEffect } from 'react'
 import { GraphContext } from '../../X6Graph'
 
-export interface X6NodeProps {
+export interface X6NodeProps extends Node.Metadata {
   shape:
     | 'rect'
     | 'circle'
@@ -11,7 +12,6 @@ export interface X6NodeProps {
     | 'path'
     | 'image'
     | 'html'
-  [key: string]: any
 }
 
 const X6Node = (props: X6NodeProps) => {
@@ -19,9 +19,7 @@ const X6Node = (props: X6NodeProps) => {
 
   useEffect(() => {
     if (graph) {
-      graph.addNode({
-        ...props,
-      })
+      graph.addNode(props)
     }
   }, [graph, props])
 
