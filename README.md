@@ -1,6 +1,16 @@
-# @renzp/x6-react-components
 
-基于@antv/x6封装的React组件
+<div align="center">
+  <img height="128" src="./logo.jpeg" />
+  <h3>
+    <strong>@renzp/x6-react-components</strong>
+  </h3>
+  <div>
+    基于@antv/x6封装的React组件
+  </div>
+</div>
+
+
+
 
 ## 安装
 
@@ -11,16 +21,21 @@ npm install @renzp/x6-react-components
 ## 使用
 
 ```ts
+import { Graph } from '@antv/x6'
+import { useRef } from 'react'
 import {
-  X6BlockEdge,
   X6CircleNode,
   X6Graph,
+  X6ImageEdge,
   X6RectNode,
   X6SnapLine,
-  X6Zoom,
+  X6ZoomTools,
+  XDotGrid,
 } from '../packages'
+import ArrowImg from './assets/arrow.png'
 
 const App = () => {
+  const ref = useRef<Graph | undefined>()
   const nodes = Array.from({ length: 10 }).map((_, i: number) => {
     return {
       id: `node_${i}`,
@@ -47,14 +62,19 @@ const App = () => {
 
   const x6Data: any = { nodes, edges }
 
+  const onMount = (graph: Graph) => {
+    ref.current = graph
+  }
+
   return (
     <div
       style={{
         height: '100vh',
       }}
     >
-      <X6Graph>
-        <X6Zoom />
+      <X6Graph onMount={onMount}>
+        <XDotGrid />
+        <X6ZoomTools />
         <X6SnapLine />
         {x6Data.nodes.map((item: any) => {
           return item.type === 'rect' ? (
@@ -82,7 +102,16 @@ const App = () => {
           )
         })}
         {x6Data.edges.map((item: any, i: number) => {
-          return <X6BlockEdge {...item} key={`edge_${i}`} />
+          return (
+            <X6ImageEdge
+              {...item}
+              size={32}
+              isRenderSourceMarker={false}
+              image={ArrowImg}
+              dashedLine
+              key={`edge_${i}`}
+            />
+          )
         })}
       </X6Graph>
       {}
@@ -92,3 +121,4 @@ const App = () => {
 
 export default App
 ```
+![](demo.png)
