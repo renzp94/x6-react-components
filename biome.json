@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.1.2/schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "organizeImports": {
     "enabled": true
   },
@@ -24,7 +24,8 @@
         "noConsoleLog": "warn"
       },
       "complexity": {
-        "useLiteralKeys": "off"
+        "useLiteralKeys": "off",
+        "noForEach": "off"
       },
       "performance": {
         "noAccumulatingSpread": "off"
@@ -41,7 +42,7 @@
     "enabled": true,
     "formatWithErrors": false,
     "indentStyle": "space",
-    "indentSize": 2,
+    "indentWidth": 2,
     "lineWidth": 80
   }
 }

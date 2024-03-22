@@ -43,13 +43,25 @@ const App = () => {
     ref.current = graph
   }
 
+  const onEvent = (e: any) => {
+    console.log(e)
+  }
+
   return (
     <div
       style={{
         height: '100vh',
       }}
     >
-      <X6Graph onMount={onMount}>
+      <X6Graph
+        events={[
+          {
+            name: 'view:mounted',
+            args: onEvent,
+          },
+        ]}
+        onMount={onMount}
+      >
         <XDotGrid />
         <X6ZoomTools />
         <X6SnapLine />

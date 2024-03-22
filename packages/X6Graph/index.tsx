@@ -1,10 +1,24 @@
-import { Graph, type Options } from '@antv/x6'
+import { EventArgs, Graph, type Options } from '@antv/x6'
 import { createContext, useEffect, useRef, useState } from 'react'
 import { X6ZOOM } from '../X6Tools/X6ZoomTools'
 import './index.less'
 
+export type Handler<Args> = Args extends null | undefined
+  ? () => any
+  : Args extends any[]
+    ? (...args: Args) => any
+    : (args: Args) => any
+
+export interface Events<Name extends keyof EventArgs> {
+  name: Name
+  args: Handler<EventArgs[Name]>
+  context?: any
+  once?: boolean
+}
+
 export interface X6GraphProps extends Omit<Partial<Options.Manual>, 'grid'> {
   children?: React.ReactNode
+  events?: Events<keyof EventArgs>[]
   onMount?: (graph: Graph) => void
 }
 
@@ -32,6 +46,10 @@ const X6Graph = (props: X6GraphProps) => {
         scaling,
         ...(props ?? {}),
         grid: undefined,
+      })
+      props?.events?.forEach((item) => {
+        const { once, name, args, context } = item
+        x6Graph?.[once ? 'once' : 'on'](name, args, context)
       })
 
       setGraph((v) => {
