@@ -15,7 +15,7 @@
 ## 安装
 
 ```sh
-npm install @renzp/x6-react-components
+npm install @antv/x6 @renzp/x6-react-components
 ```
 
 ## 使用
