@@ -1,6 +1,6 @@
 {
   "name": "@renzp/x6-react-components",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "基于@antv/x6封装的React组件",
   "type": "module",
   "files": [

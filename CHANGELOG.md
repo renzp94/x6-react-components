@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/renzp94/x6-react-components/compare/v0.0.3...v0.0.4) (2024-03-22)
+
+
+### 其他
+
+* 更新README ([9d4564a](https://github.com/renzp94/x6-react-components/commit/9d4564a6a67ed230da5dbf5dd7e0774ac07befff))
+* update README ([e6c408b](https://github.com/renzp94/x6-react-components/commit/e6c408b864559b8112d2dd143032e02ecd53ab51))
+
+
+### 新功能
+
+* 添加X6Graph组件属性events支持交互事件 ([eaab772](https://github.com/renzp94/x6-react-components/commit/eaab772a0b727bc47d7b1dda7c62f2ce1c5e2ed4))
+
 ### [0.0.3](https://github.com/renzp94/x6-react-components/compare/v0.0.2...v0.0.3) (2023-12-20)
 
 
